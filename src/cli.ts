@@ -43,7 +43,7 @@ function printPostInstallSetupHints(projectRoot: string): void {
 
   stdout.write(`\n${S.cyan('Next steps (outside this CLI)')}\n`);
   stdout.write(
-    `  ${S.bold('Claude Code')} — Run ${S.green('/setup-agent-skills')} ` +
+    `  ${S.bold('Claude Code')} — Run ${S.green('/setup-agenture')} ` +
       `(or paste the prompt below; it also points at ${S.bold('AGENT_SKILLS_INSTALL.md')}).\n\n`,
   );
   stdout.write(

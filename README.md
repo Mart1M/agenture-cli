@@ -14,7 +14,7 @@ Bootstrap your repo with a shared memory system, agent rules, and skill install 
 | Agent hub | `.agents/` (skills land here for most tools) |
 | Universal agent instructions | `AGENTS.md` |
 | Skills install playbook | `AGENT_SKILLS_INSTALL.md` |
-| Claude Code | `CLAUDE.md` + `.claude/commands/setup-agent-skills.md` |
+| Claude Code | `CLAUDE.md` + `.claude/commands/setup-agenture.md` |
 | GitHub Copilot | `.github/copilot-instructions.md` |
 | Cursor | `.cursor/rules/agent-memory.mdc` |
 
@@ -65,7 +65,7 @@ After `init`, the CLI prints a prompt to paste into your agent. It will:
 
 **Claude Code** — run the slash command:
 ```
-/setup-agent-skills
+/setup-agenture
 ```
 
 **Copilot / Cursor / Codex / other agents** — paste the prompt printed by `init`, or tell your agent:

@@ -28,7 +28,7 @@ Do **not** duplicate content already in `CLAUDE.md`, this file, or `AGENT_MEMORY
 
 Install skills from [skills.sh](https://skills.sh/) using one of:
 
-- **Claude Code:** Slash command **`/setup-agent-skills`** (`.claude/commands/setup-agent-skills.md`)
+- **Claude Code:** Slash command **`/setup-agenture`** (`.claude/commands/setup-agenture.md`)
 - **Any agent:** **`AGENT_SKILLS_INSTALL.md`** at the repo root
 
 The agent should use full repo context and `npx skills find` / `npx skills add` as documented there.

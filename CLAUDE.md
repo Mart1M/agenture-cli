@@ -38,4 +38,4 @@ This is a zero-dependency Node.js CLI (ESM, TypeScript) that copies a fixed set 
 - `.agents/skills/` — landing zone for `npx skills add`
 - `.memory/` — structured memory directories (`decision/`, `preference/`, `pattern/`, `context/`)
 - Root stubs: `CLAUDE.md`, `AGENTS.md`, `AGENT_MEMORY_RULES.md`, `AGENT_SKILLS_INSTALL.md`
-- Agent-specific rule files: `.cursor/rules/agent-memory.mdc`, `.claude/commands/setup-agent-skills.md`, `.github/copilot-instructions.md`
+- Agent-specific rule files: `.cursor/rules/agent-memory.mdc`, `.claude/commands/setup-agenture.md`, `.github/copilot-instructions.md`

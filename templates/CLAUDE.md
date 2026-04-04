@@ -24,6 +24,6 @@ Do not duplicate what is already in `AGENTS.md` or `AGENT_MEMORY_RULES.md`.
 
 ## Phase 2: Agent skills
 
-Run the **slash command** **`/setup-agent-skills`** (`.claude/commands/setup-agent-skills.md`). Alternatively read **`AGENT_SKILLS_INSTALL.md`**.
+Run the **slash command** **`/setup-agenture`** (`.claude/commands/setup-agenture.md`). Alternatively read **`AGENT_SKILLS_INSTALL.md`**.
 
 Use full repo context to run `npx skills find` / `npx skills add` against [skills.sh](https://skills.sh/).

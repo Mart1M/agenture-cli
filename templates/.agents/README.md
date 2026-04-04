@@ -2,7 +2,7 @@
 
 **Tool-agnostic directory** for shared skills and docs. **agenture-cli** also adds tool-specific folders at the repo root (`.cursor/`, `.claude/`, `.github/…`).
 
-**Not for Claude slash commands:** Claude Code only picks up **`/…` commands** from **`.claude/commands/`**, not from `.agents/commands/`. Keep playbooks like `setup-agent-skills` under `.claude/commands/` if you want a slash command.
+**Not for Claude slash commands:** Claude Code only picks up **`/…` commands** from **`.claude/commands/`**, not from `.agents/commands/`. Keep playbooks like `setup-agenture` under `.claude/commands/` if you want a slash command.
 
 ## `skills/`
 

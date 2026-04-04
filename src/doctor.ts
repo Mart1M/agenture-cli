@@ -20,7 +20,7 @@ export function runDoctor(): { ok: boolean; messages: string[] } {
 
   messages.push('');
   messages.push(
-    'Skills: `.agents/skills/` (npx skills). Claude → /setup-agent-skills; Copilot → .github/copilot-instructions.md + AGENT_SKILLS_INSTALL.md.',
+    'Skills: `.agents/skills/` (npx skills). Claude → /setup-agenture; Copilot → .github/copilot-instructions.md + AGENT_SKILLS_INSTALL.md.',
   );
   messages.push('Skills CLI: https://skills.sh/docs · https://github.com/vercel-labs/skills');
 

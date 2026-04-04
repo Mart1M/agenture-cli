@@ -12,7 +12,7 @@ After **`agenture-cli init`**, the CLI prints a **short copy-paste prompt** that
 
 ## What this repo gives you
 
-Bootstrap adds **`.agents/`** (including **`.agents/skills/`** for agents that use that path), plus **Copilot** → `.github/copilot-instructions.md`, **Cursor** → `.cursor/rules/`, **Claude Code** → `.claude/commands/setup-agent-skills.md` (slash command playbook). Use repo context to pick skills from the public directory.
+Bootstrap adds **`.agents/`** (including **`.agents/skills/`** for agents that use that path), plus **Copilot** → `.github/copilot-instructions.md`, **Cursor** → `.cursor/rules/`, **Claude Code** → `.claude/commands/setup-agenture.md` (slash command playbook). Use repo context to pick skills from the public directory.
 
 ## Links
 
@@ -62,7 +62,7 @@ Bootstrap adds **`.agents/`** (including **`.agents/skills/`** for agents that u
 
 7. Tell the user what was installed and what to commit.
 
-**Claude Code:** Type **`/setup-agent-skills`** to load the project command (`.claude/commands/setup-agent-skills.md`).
+**Claude Code:** Type **`/setup-agenture`** to load the project command (`.claude/commands/setup-agenture.md`).
 
 ## OpenAI Codex CLI
 
