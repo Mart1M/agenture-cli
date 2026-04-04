@@ -18,6 +18,8 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
+      - run: npm config delete //registry.npmjs.org/:_authToken
+
       - uses: pnpm/action-setup@v3
         with:
           version: latest
