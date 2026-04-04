@@ -1,6 +1,6 @@
 {
   "name": "agenture-cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Bootstrap .agents/ hub, project memory, and tool snippets (Cursor, Claude Code, Copilot); skills via npx skills / skills.sh.",
   "type": "module",
   "bin": {
