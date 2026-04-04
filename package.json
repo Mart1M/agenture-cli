@@ -1,0 +1,37 @@
+{
+  "name": "agenture-cli",
+  "version": "0.1.0",
+  "description": "Bootstrap .agents/ hub, project memory, and tool snippets (Cursor, Claude Code, Copilot); skills via npx skills / skills.sh.",
+  "type": "module",
+  "bin": {
+    "agenture": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "templates",
+    "scripts"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "node --import tsx src/cli.ts",
+    "prepack": "pnpm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "agents",
+    "skills",
+    "memory",
+    "bootstrap",
+    "claude-code",
+    "github-copilot",
+    "copilot"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
+}

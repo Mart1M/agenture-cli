@@ -1,0 +1,53 @@
+---
+description: Project persistent memory — read AGENT_MEMORY_RULES.md and write to .memory/
+globs:
+alwaysApply: true
+---
+
+# Project memory (Cursor rule)
+
+Portable hub: **[`.agents/README.md`](../../.agents/README.md)**. Canonical memory for **all agents:** [`AGENT_MEMORY_RULES.md`](../../AGENT_MEMORY_RULES.md) (keep aligned if you edit one).
+
+## Index
+
+Read `.memory/INDEX.md` at the start of each session.
+
+Detailed files are in `.memory/decision/`, `.memory/preference/`, `.memory/context/`, `.memory/pattern/`.
+
+## Rule: update memory as you go
+
+Whenever something important surfaces in the conversation — a technical decision, a stated preference, an established convention, a reusable pattern, something to avoid — **write it to `.memory/` immediately**, without waiting to be asked.
+
+Users **do not** have to say “memory”. Ordinary tasks (“use X for UI”, “from now on Y”, “never Z”) still require **`.memory/` + `INDEX.md`** when they imply a lasting rule. See **“Ordinary chat”** in [`AGENT_MEMORY_RULES.md`](../../AGENT_MEMORY_RULES.md).
+
+**Save when:**
+- The user corrects your approach ("no, do it this way instead")
+- A design or architecture decision is settled
+- A convention is established for the first time
+- A component or pattern is designated as the reference
+- The user mandates a **library, design system, or stack** in normal language — **always** add `.memory/`, even if you also edit `AGENTS.md`
+
+**Do not save:**
+- Temporary debugging steps
+- Unanswered questions
+- Static text copied from `AGENTS.md` / `CLAUDE.md` / `AGENT_MEMORY_RULES.md` with **no new** fact from this conversation (never use this to skip a mandate the user *just* gave)
+
+**Format** `.memory/{category}/YYYY-MM-DD-slug.md`:
+```
+---
+date: YYYY-MM-DD
+user: <identifier when known — e.g. session metadata, git profile, or what the user states; otherwise omit or leave empty>
+category: decision | preference | context | pattern
+tags: [tag1, tag2]
+---
+
+## Short title
+
+Factual, actionable content (2–4 sentences max).
+```
+
+- **`date`**: calendar day when the decision or preference is recorded (authoritative: the session’s `Today's date` field when present).
+- **`user`**: who stated or validated the fact being memorized; fill in whenever reliable information is available.
+- When **updating** an existing entry, refresh `date` (or add `updated: YYYY-MM-DD`) and adjust `user` if the edit reflects a different person.
+
+After every write, update `.memory/INDEX.md` (index lines may include a short date + user for quick scanning).
