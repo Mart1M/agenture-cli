@@ -44,14 +44,20 @@ export type InitResult = {
   skipped: string[];
 };
 
+export type TemplateFilter = (relativePath: string) => boolean;
+
 /** Dry-run: classify template destinations without writing. */
-export async function getInitPlan(targetRoot: string): Promise<InitPlan> {
+export async function getInitPlan(
+  targetRoot: string,
+  includeTemplate?: TemplateFilter,
+): Promise<InitPlan> {
   const { root: templateRoot, files: allFiles } = await loadTemplateIndex();
   const toCreate: string[] = [];
   const existing: string[] = [];
 
   for (const abs of allFiles) {
     const rel = relative(templateRoot, abs);
+    if (includeTemplate && !includeTemplate(rel)) continue;
     const dest = join(targetRoot, rel);
     try {
       await stat(dest);
@@ -66,6 +72,7 @@ export async function getInitPlan(targetRoot: string): Promise<InitPlan> {
 
 export type InitWorkspaceOptions = {
   overwriteExisting: boolean;
+  includeTemplate?: TemplateFilter;
 };
 
 /**
@@ -82,6 +89,7 @@ export async function initWorkspace(
 
   for (const abs of allFiles) {
     const rel = relative(templateRoot, abs);
+    if (options.includeTemplate && !options.includeTemplate(rel)) continue;
     const dest = join(targetRoot, rel);
 
     let exists = false;

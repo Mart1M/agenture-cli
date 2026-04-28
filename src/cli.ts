@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { relative, resolve } from 'node:path';
 import { cwd, exit, stdout } from 'node:process';
+import { createInterface } from 'node:readline/promises';
+import { stdin } from 'node:process';
 import { getInitPlan, initWorkspace } from './init.js';
 import { runDoctor } from './doctor.js';
 import { S } from './style.js';
@@ -97,6 +99,75 @@ type ParsedInit = {
   force: boolean;
 };
 
+type InstallTarget = 'global' | 'cursor' | 'copilot' | 'claude';
+
+function buildTemplateFilter(selected: Set<InstallTarget>): (rel: string) => boolean {
+  return (rel: string): boolean => {
+    if (selected.has('global')) {
+      if (
+        rel.startsWith('.agents/') ||
+        rel.startsWith('.memory/') ||
+        rel === 'AGENT_MEMORY_RULES.md' ||
+        rel === 'AGENT_SKILLS_INSTALL.md' ||
+        rel === 'AGENTS.md'
+      ) {
+        return true;
+      }
+    }
+
+    if (selected.has('cursor') && rel.startsWith('.cursor/')) return true;
+    if (selected.has('copilot') && rel.startsWith('.github/')) return true;
+    if (
+      selected.has('claude') &&
+      (rel.startsWith('.claude/') || rel === 'CLAUDE.md')
+    ) {
+      return true;
+    }
+
+    return false;
+  };
+}
+
+async function askYesNo(question: string, defaultYes = true): Promise<boolean> {
+  const rl = createInterface({ input: stdin, output: stdout });
+  try {
+    const hint = defaultYes ? ' [Y/n] ' : ' [y/N] ';
+    const raw = (await rl.question(`${question}${hint}`)).trim().toLowerCase();
+    if (!raw) return defaultYes;
+    if (raw === 'y' || raw === 'yes' || raw === 'o' || raw === 'oui') return true;
+    if (raw === 'n' || raw === 'no' || raw === 'non') return false;
+    return defaultYes;
+  } finally {
+    rl.close();
+  }
+}
+
+async function selectInstallTargets(): Promise<Set<InstallTarget>> {
+  const all = new Set<InstallTarget>(['global', 'cursor', 'copilot', 'claude']);
+  if (!stdin.isTTY || !stdout.isTTY) return all;
+
+  stdout.write(`\n${S.cyan('What should be installed?')}\n`);
+  const selected = new Set<InstallTarget>();
+  if (await askYesNo('Install global bootstrap files?', true)) {
+    selected.add('global');
+  }
+  if (await askYesNo('Install Cursor files?', true)) {
+    selected.add('cursor');
+  }
+  if (await askYesNo('Install GitHub Copilot files?', true)) {
+    selected.add('copilot');
+  }
+  if (await askYesNo('Install Claude files?', true)) {
+    selected.add('claude');
+  }
+
+  if (selected.size === 0) {
+    stdout.write(`${S.yellow('No target selected — defaulting to all targets.')}\n`);
+    return all;
+  }
+  return selected;
+}
+
 function parseInitArgv(argv: string[]): ParsedInit | null {
   const rest = argv.slice(2).filter((a) => a !== '');
   if (rest.length === 0 || rest[0] !== 'init') return null;
@@ -165,12 +236,14 @@ async function main(): Promise<void> {
   }
 
   const { target, force } = parsed;
+  const selectedTargets = await selectInstallTargets();
+  const includeTemplate = buildTemplateFilter(selectedTargets);
 
   stdout.write(
     `\n${S.dim('Install:')} ${S.bold('.agents/, .memory/, root stubs, .cursor/, .claude/, .github/')}\n`,
   );
 
-  const plan = await getInitPlan(target);
+  const plan = await getInitPlan(target, includeTemplate);
 
   if (plan.toCreate.length === 0 && plan.existing.length === 0) {
     stdout.write(`${S.yellow('No template files to apply.')}\n`);
@@ -197,6 +270,7 @@ async function main(): Promise<void> {
 
   const r = await initWorkspace(target, {
     overwriteExisting,
+    includeTemplate,
   });
 
   stdout.write(
