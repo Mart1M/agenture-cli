@@ -17,7 +17,7 @@ Bootstrap file from **agenture-cli**.
 
 The user **does not** have to mention memory, `.memory`, or “save this”. Treat **any lasting project signal** in everyday chat as requiring a file write:
 
-- They ask for a change that implies a **rule** (“only Tailwind”, “Velocity for UI”, “strict TS”, “French copy”, “pnpm only”) → create **`.memory/decision/`** or **`preference/`** + update **[`INDEX.md`](../.memory/INDEX.md)** in the **same turn** as your code/help.
+- They ask for a change that implies a **rule** (“only Tailwind”, DS for UI”, “strict TS”, “French copy”, “pnpm only”) → create **`.memory/decision/`** or **`preference/`** + update **[`INDEX.md`](../.memory/INDEX.md)** in the **same turn** as your code/help.
 - They only state a policy **without** asking for code → still write `.memory/` (do not answer with chat alone).
 
 Use the frontmatter format in **`AGENT_MEMORY_RULES.md`**. Use **agent / edit** mode so files on disk actually change.

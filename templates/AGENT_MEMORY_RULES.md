@@ -21,10 +21,10 @@ The user **will not** say “update memory”, “`.memory`”, or “enregistre
 **Ask yourself:** *If a new teammate joined tomorrow, would this statement change how they should work?* If yes → **`.memory/`** + **`INDEX.md`**.
 
 **Typical triggers** (any language):
-- Stack / libs: “use Velocity here”, “on est full pnpm”, “App Router only”
+- Stack / libs: “use DS here”, “on est full pnpm”, “App Router only”
 - Convention: “from now on…”, “always…”, “never…”, “désormais…”, “pour cette app…”
 - Correction: “non, plutôt X que Y”, “prefer hooks over classes for new code”
-- Scope: “dans `apps/test` seulement”, “only under `packages/velocity`”
+- Scope: “dans `apps/test` seulement”, “only under `packages/ds`”
 
 If you changed code to respect such a statement, the memory write is **mandatory**, not optional.
 
@@ -33,7 +33,7 @@ If you changed code to respect such a statement, the memory write is **mandatory
 - A design or architecture decision is settled
 - A convention is established for the first time
 - A component or pattern is designated as the reference
-- The user mandates a **library, design system, or stack** in chat (e.g. “use `@runswap/velocity` for UI”, “App Router only”) — **always** create a `.memory` entry in the same flow, even if you also update `AGENTS.md`
+- The user mandates a **library, design system, or stack** in chat (e.g. “use `@acme/ds` for UI”, “App Router only”) — **always** create a `.memory` entry in the same flow, even if you also update `AGENTS.md`
 
 **Do not save:**
 - Temporary debugging steps
