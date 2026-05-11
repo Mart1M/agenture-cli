@@ -103,23 +103,26 @@ type InstallTarget = 'global' | 'cursor' | 'copilot' | 'claude';
 
 function buildTemplateFilter(selected: Set<InstallTarget>): (rel: string) => boolean {
   return (rel: string): boolean => {
+    // path.relative() uses backslashes on Windows — normalise before comparing.
+    const r = rel.replace(/\\/g, '/');
+
     if (selected.has('global')) {
       if (
-        rel.startsWith('.agents/') ||
-        rel.startsWith('.memory/') ||
-        rel === 'AGENT_MEMORY_RULES.md' ||
-        rel === 'AGENT_SKILLS_INSTALL.md' ||
-        rel === 'AGENTS.md'
+        r.startsWith('.agents/') ||
+        r.startsWith('.memory/') ||
+        r === 'AGENT_MEMORY_RULES.md' ||
+        r === 'AGENT_SKILLS_INSTALL.md' ||
+        r === 'AGENTS.md'
       ) {
         return true;
       }
     }
 
-    if (selected.has('cursor') && rel.startsWith('.cursor/')) return true;
-    if (selected.has('copilot') && rel.startsWith('.github/')) return true;
+    if (selected.has('cursor') && r.startsWith('.cursor/')) return true;
+    if (selected.has('copilot') && r.startsWith('.github/')) return true;
     if (
       selected.has('claude') &&
-      (rel.startsWith('.claude/') || rel === 'CLAUDE.md')
+      (r.startsWith('.claude/') || r === 'CLAUDE.md')
     ) {
       return true;
     }
