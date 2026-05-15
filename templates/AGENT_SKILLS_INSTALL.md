@@ -60,7 +60,20 @@ Bootstrap adds **`.agents/`** (including **`.agents/skills/`** for agents that u
 
 6. Verify: `npx skills list` and check install paths for each agent you targeted (see [vercel-labs/skills](https://github.com/vercel-labs/skills) — e.g. `.claude/skills`, `.agents/skills`).
 
-7. Tell the user what was installed and what to commit.
+7. **Update `AGENTS.md`** — this is phase 3:
+
+   a. Replace the `## Project` placeholder with 3–5 sentences covering: what the product does, target users, and core stack (language, framework, DB, hosting).
+
+   b. Replace the `## Conventions` placeholder with the actual rules you infer from the repo (coding style, test strategy, naming, PR rules, security).
+
+   c. Replace the `## Installed skills` placeholder with a bullet list of every skill just installed and one sentence explaining what it adds to the workflow. Example:
+      ```
+      - **web-design-guidelines** (`claude-code`) — enforces accessible, responsive UI patterns when generating or reviewing front-end code.
+      ```
+
+   d. Save `AGENTS.md`.
+
+8. Tell the user what was installed and what to commit.
 
 **Claude Code:** Type **`/setup-agenture`** to load the project command (`.claude/commands/setup-agenture.md`).
 

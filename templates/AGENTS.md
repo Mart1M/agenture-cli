@@ -4,9 +4,13 @@
 
 ## Project
 
+<!-- What this product does, who uses it, and the core tech stack (language, framework, DB, hosting). -->
+
 _Describe the product, scope, and stack here._
 
 ## Conventions
+
+<!-- Coding style, testing strategy, naming rules, PR guidelines, security constraints. -->
 
 _Add team rules (languages, testing, styling, security)._
 
@@ -24,11 +28,17 @@ Do **not** duplicate content already in `CLAUDE.md`, this file, or `AGENT_MEMORY
 
 **Format:** `.memory/{category}/YYYY-MM-DD-slug.md` with frontmatter (`date`, `user` when known, `category`, `tags`). Keep entries short (2–4 sentences). Update `.memory/INDEX.md` after each write.
 
-## Phase 2: Agent skills
+## Installed skills
+
+<!-- Updated automatically by /setup-agenture. Each entry: skill name, what it adds to your workflow. -->
+
+_Run `/setup-agenture` in Claude Code (or follow `AGENT_SKILLS_INSTALL.md`) to populate this section._
+
+## Install or update skills
 
 Install skills from [skills.sh](https://skills.sh/) using one of:
 
 - **Claude Code:** Slash command **`/setup-agenture`** (`.claude/commands/setup-agenture.md`)
 - **Any agent:** **`AGENT_SKILLS_INSTALL.md`** at the repo root
 
-The agent should use full repo context and `npx skills find` / `npx skills add` as documented there.
+The agent reads the full repo context, searches for matching skills, installs them, and fills in the **Installed skills** section above.
